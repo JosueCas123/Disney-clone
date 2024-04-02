@@ -1,7 +1,12 @@
-import { ThemeToggle } from '@/app/ThemeToggler'
+import { ThemeToggle } from '@/components/ThemeToggler'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import SearchImput from './SearchImput'
+import { GenreDropdown } from './GenreDropdown'
+
+
+
 
 export const Header = () => {
   return (
@@ -18,7 +23,9 @@ export const Header = () => {
 
         <div className='flex space-x-2 '>
             {/* GenereDropdown */}
+            <GenreDropdown/>
             {/* SearchINput */}
+            <SearchImput/>
             {/* Login */}
             <ThemeToggle/>
         </div>
