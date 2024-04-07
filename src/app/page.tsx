@@ -10,11 +10,12 @@ import Image from "next/image";
   const topRatedMovies = await getToRatedMovies();
   const popularMovies = await getPopularMovies();
   return (
-    <main>
+    <main className="">
      
       {/* carusel Banner Wrapper */}
       <CaruselBannerWrapper/>
-      <div className="flex flex-col space-y-2 xl:mt-48">
+      <div className="flex flex-col space-y-2 xl:-mt-48">
+        
         <MovieCarusel title="Upcoming" movies={upcomingMovies} />      
         <MovieCarusel movies={topRatedMovies} title="Top Rated" />
         <MovieCarusel movies={popularMovies} title="Popular" />

@@ -7,7 +7,7 @@ interface Props {
 }
 export  const CaruselBannerWrapper =async ({id, keywords}:Props) => {
     const movies = await getDiscoverMovies(id, keywords);
-console.log(movies)
+
   return (
    <CaruselBanner movies={movies} />
   )

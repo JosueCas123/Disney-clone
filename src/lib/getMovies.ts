@@ -24,6 +24,36 @@ export async function fetchFromTMB(url: URL, cacheTime?: number) {
     return data;
 }
 
+
+
+
+  
+export async function getSearchedMovies(term: string) {
+    const url = new URL("https://api.themoviedb.org/3/search/movie");
+  
+    url.searchParams.set("query", term);
+    url.searchParams.set("include_adult", "false");
+    url.searchParams.set("language", "en-US");
+    url.searchParams.set("page", "1");
+    
+    const options: RequestInit = {
+        method: 'GET',
+        headers: {
+            accept: 'application/json',
+            Authorization: `Bearer ${process.env.TOKEN_API}`
+        },
+        next: {
+            revalidate:  60 * 60 * 24
+        }
+    }
+    const response = await fetch(url.toString(), options);
+    const data = (await response.json()) as SearchResults;
+    
+    return data.results;
+   
+  }
+
+
 export async function getUpComingMovies() {
     const url = new URL("https://api.themoviedb.org/3/movie/upcoming");
 
@@ -53,10 +83,3 @@ export async function getPopularMovies() {
   
     return data.results;
   }
-export async function getSearchMovies(keyword: string) {
-    const url = new URL("https://api.themoviedb.org/3/search/movie");
-
-    url.searchParams.set("query", keyword);
-    const data = await fetchFromTMB(url);
-    return data.results;
-}

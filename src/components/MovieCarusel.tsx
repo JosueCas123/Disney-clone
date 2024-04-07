@@ -23,7 +23,7 @@ export const MovieCarusel = ({title,movies,isVertical}:Props) => {
                         key={movie.id}
                         className={cn(
                             isVertical &&
-                            "flex flex-col space-y-4 mb-5 items-center lg-flex-row space-x-5")}
+                            "flex flex-col space-y-5 mb-5 items-center lg:flex-row space-x-5")}
                     >
                         <MovieCard key={movie.id} movie={movie}/>
                         <div className="max-w-2xl">
